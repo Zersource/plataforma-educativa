@@ -15,10 +15,11 @@
     <artifactId>plataforma-educativa</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>plataforma-educativa</name>
-    <description>Sistema de inscripcion de cursos - CDY2204</description>
+    <description>Sistema de inscripcion de cursos - CDY2204 Semana 2</description>
 
     <properties>
         <java.version>17</java.version>
+        <aws.sdk.version>2.21.0</aws.sdk.version>
     </properties>
 
     <dependencies>
@@ -56,6 +57,22 @@
             <groupId>com.oracle.database.security</groupId>
             <artifactId>osdt_core</artifactId>
             <version>21.9.0.0</version>
+        </dependency>
+
+        <!-- ============================================ -->
+        <!-- AWS SDK v2 - S3 (NUEVO SEMANA 2)            -->
+        <!-- ============================================ -->
+        <dependency>
+            <groupId>software.amazon.awssdk</groupId>
+            <artifactId>s3</artifactId>
+            <version>${aws.sdk.version}</version>
+        </dependency>
+
+        <!-- AWS SDK v2 - STS (necesario para session token) -->
+        <dependency>
+            <groupId>software.amazon.awssdk</groupId>
+            <artifactId>sts</artifactId>
+            <version>${aws.sdk.version}</version>
         </dependency>
 
         <!-- Lombok -->
