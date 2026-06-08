@@ -1,8 +1,0 @@
-com/duoc/plataforma/controller/GuiaDespachoController.class
-com/duoc/plataforma/dto/GuiaResponseDTO.class
-com/duoc/plataforma/repository/GuiaDespachoRepository.class
-com/duoc/plataforma/config/StorageConfig.class
-com/duoc/plataforma/model/GuiaDespacho.class
-com/duoc/plataforma/dto/GuiaRequestDTO.class
-com/duoc/plataforma/service/GuiaDespachoService.class
-com/duoc/plataforma/PlataformaEducativaApplication.class
