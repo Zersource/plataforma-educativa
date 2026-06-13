@@ -30,6 +30,7 @@ public class GuiaDespachoService {
 
     private final GuiaDespachoRepository repository;
     private final S3Client s3Client;
+    private final PdfService pdfService;
 
     @Value("${aws.s3.bucket}")
     private String bucketName;
@@ -97,6 +98,12 @@ public class GuiaDespachoService {
         } catch (IOException e) {
             throw new RuntimeException("Error al subir guía: " + e.getMessage());
         }
+    }
+
+    public byte[] generarPdfResumen(Long id) {
+        GuiaDespacho guia = repository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Guía no encontrada con id: " + id));
+        return pdfService.generarResumenPdf(guia);
     }
 
     public byte[] descargarGuia(Long id) {
