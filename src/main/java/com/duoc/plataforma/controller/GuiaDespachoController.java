@@ -33,6 +33,13 @@ public class GuiaDespachoController {
         return ResponseEntity.ok(service.subirGuiaS3(id, file));
     }
 
+    @PutMapping("/{id}/archivo")
+    public ResponseEntity<GuiaResponseDTO> modificarArchivoGuia(
+            @PathVariable Long id,
+            @RequestParam("file") MultipartFile file) {
+        return ResponseEntity.ok(service.subirGuiaS3(id, file));
+    }
+
     @GetMapping("/{id}/descargar")
     public ResponseEntity<byte[]> descargarGuia(@PathVariable Long id) {
         byte[] contenido = service.descargarGuia(id);
@@ -41,6 +48,7 @@ public class GuiaDespachoController {
                 .contentType(MediaType.APPLICATION_OCTET_STREAM)
                 .body(contenido);
     }
+
     @GetMapping("/{id}/pdf")
     public ResponseEntity<byte[]> descargarResumenPdf(@PathVariable Long id) {
         byte[] pdf = service.generarPdfResumen(id);
