@@ -41,6 +41,14 @@ public class GuiaDespachoController {
                 .contentType(MediaType.APPLICATION_OCTET_STREAM)
                 .body(contenido);
     }
+    @GetMapping("/{id}/pdf")
+    public ResponseEntity<byte[]> descargarResumenPdf(@PathVariable Long id) {
+        byte[] pdf = service.generarPdfResumen(id);
+        return ResponseEntity.ok()
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"resumen_" + id + ".pdf\"")
+                .contentType(MediaType.APPLICATION_PDF)
+                .body(pdf);
+    }
 
     @PutMapping("/{id}")
     public ResponseEntity<GuiaResponseDTO> modificarGuia(
