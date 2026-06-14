@@ -69,8 +69,7 @@ public class GuiaDespachoService {
         GuiaDespacho guia = repository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Guía no encontrada con id: " + id));
 
-        String fecha = guia.getFecha().format(DateTimeFormatter.ofPattern("yyyyMMdd"));
-        String s3Key = fecha + "/" + guia.getTransportista() + "/" + guia.getNombreArchivo();
+        String s3Key = guia.getId() + "/" + guia.getNombreArchivo();
 
         try {
             String rutaEfs = efsPath + "/" + guia.getNombreArchivo();
