@@ -21,7 +21,7 @@ public class GuiaDespachoController {
 
     private final GuiaDespachoService service;
 
-    @PostMapping
+    @PostMapping(consumes = "application/json", produces = "application/json")
     public ResponseEntity<GuiaResponseDTO> crearGuia(@RequestBody GuiaRequestDTO dto) {
         return ResponseEntity.ok(service.crearGuia(dto));
     }
@@ -58,7 +58,7 @@ public class GuiaDespachoController {
                 .body(pdf);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping(value = "/{id}", consumes = "application/json", produces = "application/json")
     public ResponseEntity<GuiaResponseDTO> modificarGuia(
             @PathVariable Long id,
             @RequestBody GuiaRequestDTO dto) {
@@ -71,7 +71,7 @@ public class GuiaDespachoController {
         return ResponseEntity.noContent().build();
     }
 
-    @GetMapping
+    @GetMapping(produces = "application/json")
     public ResponseEntity<List<GuiaResponseDTO>> consultarGuias(
             @RequestParam(required = false) String transportista,
             @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fecha) {
