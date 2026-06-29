@@ -58,7 +58,8 @@ public class GuiaDespachoService {
                 Files.createFile(filePath);
             }
         } catch (IOException e) {
-            throw new RuntimeException("Error al crear archivo en EFS: " + e.getMessage());
+            // Si no se puede crear en EFS, continuamos igual
+            System.out.println("Advertencia EFS: " + e.getMessage());
         }
 
         GuiaDespacho saved = repository.save(guia);
